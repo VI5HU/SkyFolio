@@ -1,0 +1,122 @@
+/* Basic Styling */
+
+html, body {
+	font-family: "Helvetica", Arial, sans-serif;
+	background-color: whitesmoke;
+	margin: 0;
+	padding: 0;
+	/* display: flex; */
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+header {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+h1 {
+	font-size: 2rem;
+	text-align: center;
+	/* border: 5px outset rgb(0, 0, 255); */
+	border-radius: 30px;
+}
+.container {
+	font-family: Lato, Helvetica, sans-serif;
+	/* display: flex; */
+	text-align: center;
+	margin: 40px auto;
+	background-color: white;
+	padding: 30px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	max-width: 400px;
+	width: 100%;
+}
+input[type="text"] {
+	padding: 8px;
+	font-size: 1rem;
+	width: 60%;
+	margin-right: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+button {
+	padding: 8px 16px;
+	margin: 10px;
+	transition: 0.3s;
+	width: 40%;
+	font-size: 1rem;
+	border: 2px solid rgb(0, 0, 250);
+	border-radius: .2em;
+	cursor: pointer;
+}
+
+button:hover {
+	cursor: pointer;
+	background-color: rgb(0, 0, 255);
+	color: whitesmoke;
+}
+
+.weather-details {
+	display: none;
+	margin-top: 20px;
+}
+#errorMessage {
+	color: red;
+}
+.weather-details p {
+	font-size: 1.2rem;
+	margin: 5px 0;
+}
+@media (prefers-color-scheme: dark) {
+	html, body {
+		background-color: rgb(10, 10, 35)
+	}
+	h1 {
+		color: whitesmoke;
+		/* box-shadow: 0.1px 0.1px 0.5em whitesmoke;
+		border-color: chocolate; */
+	}
+	p {
+		color: whitesmoke;
+	}
+	button {
+		color: white;
+		background-color: black;
+		border: 2px solid rgb(255, 255, 255);
+	}
+	button:hover {
+		background-color: rgb(255, 255, 255);
+		color: black;
+		cursor: pointer;
+	}
+	button:visited {
+		border: none;
+	}
+	.container {
+		text-align: center;
+		background-color: black;
+		padding: 30px;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+		max-width: 400px;
+		width: 100%;
+	}
+
+	::selection {
+		color: black;
+		background-color: whitesmoke;
+	}
+}
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 3.5em;
+	}
+	p {
+		margin-top: 0px;
+	}
+	button {
+		display: none;
+	}
+}

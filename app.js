@@ -1,4 +1,5 @@
-document.getElementById("getWeather").addEventListener("click", function() {
+document.getElementById("getWeather").addEventListener("click", function(event) {
+	event.preventDefault();
 	const city = document.getElementById("city").value;
 	if (city === "") {
 		displayError("Please enter a city name.");
