@@ -16,16 +16,21 @@
 			<input type="text" id="city" placeholder="Enter City" autofocus/>
 			<button id="getWeather" type="submit">Get Weather</button>
 		</form>
-		<div id="weatherDetails" class="weather-details">
-			<h2 id="cityName"></h2>
-			<p id="temperature"></p>
-			<p id="humidity"></p>
-			<p id="windSpeed"></p>
-			<p id="description"></p>
-		</div>
-
-		<p id="errorMessage" class="error"></p>
 	</div>
-	<script type="text/javascript" src="app.js"></script>
+	<div id ='weather-details' class="weather-details">
+		<h2 id='weatherTitle'></h2>
+		<div id='condition'>
+			<h2 id = 'conditionText'></h2>
+			<!-- <img id='conditionImage'> -->
+		</div>
+		<p id="temperature"></p>
+		<p id="humidity"></p>
+		<p id="aqi"></p>
+		<p id="wind"></p>
+		<p id="time"></p>
+		<p id="visibility"></p>
+	</div>
+	<p id="errorMessage" class="error"></p>
+	<script type="module" src="js/app.js"></script>
 </body>
 </html>

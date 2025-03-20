@@ -14,3 +14,7 @@
     font-family: 'Open Sans', Helvetica, sans-serif;
     src: url(https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans&family=Quicksand:wght@500&family=Roboto&family=Roboto+Mono&family=Rubik&display=swap)
 }
+@font-face {
+	font-family: 'Inter', helvetica, sans-serif;
+	src: url(https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap);
+}
