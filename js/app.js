@@ -1,4 +1,4 @@
-import TOKEN from './config.js'
+import TOKEN from 'config.js'
 document.getElementById("getWeather").addEventListener("click", function(event) {
 	event.preventDefault();
 	// navigator.vibrate(20);
