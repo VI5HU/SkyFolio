@@ -21,8 +21,12 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 			q: city,
 			aqi: 'yes'
 		})
-		const data = await getWeather(weatherApiBaseUrl, searchParams);
-		displayWeather(data);
+		const weatherData = await getWeather(weatherApiBaseUrl, searchParams);
+		try {
+			displayWeather(weatherData);
+		} catch (error) {
+			displayError("Not a proper city name")
+		}
 	}
 	const wttr = `https://wttr.in/${city}?format=v2`
 	// fetch(wttr)
@@ -48,14 +52,13 @@ async function getWeather(baseUrl, searchParams) {
 		return await response.json();
 	} catch (error) {
 		console.error("Error fetching JSON:", error);
-		displayError(error);
+		displayError('Not a proper city name');
 		return null;
 	}
 }
 
 function displayWeather(data) {
 	document.getElementById("errorMessage").textContent = "";
-
 	document.getElementById("weather-details").style.display = "block";
 	document.getElementById("weatherTitle").textContent = `Current weather for ${data.location.name}, ${data.location.region}, ${data.location.country}: `;
 	document.getElementById("conditionText").textContent = `Condition: ${data.current.condition.text}`;
