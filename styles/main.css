@@ -97,6 +97,18 @@ input::selection {
 	color: whitesmoke;
 	background-color: black;
 }
+#weatherapi-weather-widget-3 {
+	width: 500px;
+	/* margin: 0 auto; */
+	display: none;
+}
+#temp {
+	margin: 0 auto;
+	max-width: 70%;
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+}
 @media (prefers-color-scheme: dark) {
 	html, body {
 		background-color: rgb(10, 10, 35)

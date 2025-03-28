@@ -5,43 +5,47 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 	const city = document.getElementById("city").value;
 	const weatherApiBaseUrl = `https://api.weatherapi.com/v1/current.json?`;
 	const weatherApiIpUrl = `https://api.weatherapi.com/v1/ip.json?`;
+	const wttr = `https://wttr.in/${city}?format=v2`
 	if (city === "") {
 		let searchParams = new URLSearchParams({
 			key: TOKEN,
 			q: 'auto:ip',
 		})
-		const locationData = await getWeather(weatherApiIpUrl, searchParams);
+		const locationData = await getData(weatherApiIpUrl, searchParams);
 		searchParams['q'] = locationData.city + locationData.region;
 		searchParams.append('aqi', 'yes');
-		const weatherData = await getWeather(weatherApiBaseUrl, searchParams);
+		const weatherData = await getData(weatherApiBaseUrl, searchParams);
 		displayWeather(weatherData);
+		document.getElementById("weatherapi-weather-widget-3").style.display  = 'block';
 	} else {
 		let searchParams = new URLSearchParams({
 			key: TOKEN,
 			q: city,
 			aqi: 'yes'
 		})
-		const weatherData = await getWeather(weatherApiBaseUrl, searchParams);
+		const weatherData = await getData(weatherApiBaseUrl, searchParams);
 		try {
 			displayWeather(weatherData);
 		} catch (error) {
 			displayError("Not a proper city name")
 		}
+		document.getElementById("weatherapi-weather-widget-3").style.display  = 'none';
 	}
-	const wttr = `https://wttr.in/${city}?format=v2`
-	// fetch(wttr)
-	// 	.then(response => response.text())
-	// 	.then(html => {
-	// 		const parser = new DOMParser();
-	// 		const doc = parser.parseFromString(html, 'text/html');
-	// 		const images = doc.querySelector('img');
-	// 		img = 'https://wttr.in/' + images.src.split("/")[3];
-	// 		console.log(img);
-	// 	})
-	// 	.catch(error => console.error('Error fetching HTML:', error));
+	let img;
+	fetch(wttr)
+		.then(response => response.text())
+		.then(html => {
+			const parser = new DOMParser();
+			const doc = parser.parseFromString(html, 'text/html');
+			const images = doc.querySelector('img');
+			img = 'https://wttr.in/' + images.src.split("/")[3];
+			console.log(img);
+			document.getElementById('weather-map').src = img;
+		})
+		.catch(error => console.error('Error fetching HTML:', error));
 });
 
-async function getWeather(baseUrl, searchParams) {
+async function getData(baseUrl, searchParams) {
 	try {
 		const url = new URL(baseUrl);
 		url.search = new URLSearchParams(searchParams).toString();
