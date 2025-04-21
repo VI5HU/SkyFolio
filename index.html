@@ -10,15 +10,18 @@
 <body>
 	<header>
 		<h1>SkyFolio</h1>
+		<h2> - A portfolio of the sky's moods</h2>
 	</header>
 	<div class="container">
 		<form id='form'>
 			<input type="text" id="city" placeholder="Enter City" autofocus/>
 			<button id="getWeather" type="submit">Get Weather</button>
 		</form>
+		<div id='break'></div>
+		<p id ='location'>Location: </p>
 	</div>
-	<div id ='weather-details' class="weather-details">
-		<h2 id='weatherTitle'></h2>
+	<div id ='weather-details'>
+		<!-- <h2 id='weatherTitle'></h2>
 		<div id='condition'>
 			<h2 id = 'conditionText'></h2>
 			<img id='conditionImage'>
@@ -33,7 +36,77 @@
 		<p id='sunrise'></p>
 		<p id='sunset'></p>
 		<p id='moonrise'></p>
-		<p id='moonset'></p>
+		<p id='moonset'></p> -->
+		<!-- <div id='wind'>
+
+			<p class = 'title'>Wind</p>
+			<p>e</p>
+		</div>
+		<div id='humidity'>
+			<p class = 'title'>Humidity</p>
+			<p>e</p>
+		</div>
+		<div id='air'>
+			<p class = 'title'>Air pollution</p>
+			<p>e</p>
+		</div>
+		<div id='pressure'>
+			<p class = 'title'>Pressure</p>
+			<p>e</p>
+		</div>
+		<div id='uv'>
+			<p class = 'title'>UV index</p>
+			<p>e</p>
+		</div>
+		<div id='sunrise'>
+			<p class = 'title'>Sunrise and sunset</p>
+			<p>e</p>
+		</div> -->
+		<div class='row'>
+			<div class='weather-card' id='wind'>
+				<p class="title">Wind</p>
+				<p class="value"></p>
+				<p class="unit"></p>
+			</div>
+			<div class='weather-card' id='humidity'>
+				<p class="title">Humidity</p>
+				<p class="value"></p>
+				<p class="unit"></p>
+			</div>
+			<div class='weather-card' id="pollution">
+				<p class="title">Air Pollution</p>
+				<p class="value"></p>
+				<p class="unit"></p>
+				<!-- <div class="pollution-meter">
+					<div class="meter-background"></div>
+					<div class="meter-indicator"></div>
+				</div> -->
+				<meter id="pollution-meter"
+						value="5"
+						min="0"
+						max="10"
+						low="3"
+						high="7"
+						optimum="3">
+				</meter>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='weather-card' id='pressure'>
+				<p class="title">Pressure</p>
+				<p class="value">1018 hPa</p>
+				<p class="unit">High</p>
+			</div>
+			<div class='weather-card' id='uv'>
+				<p class="title">UV Index</p>
+				<p class="value">0.0</p>
+				<!-- <p class="unit">Low</p> -->
+			</div>
+			<div class='weather-card' id="sunrise-sunset">
+				<p class="title">Sunrise & Sunset</p>
+				<p class="value"></p>
+			</div>
+		</div>
 	</div>
 	<p id="errorMessage" class="error"></p>
 	<div id = 'temp'>

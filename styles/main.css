@@ -7,42 +7,71 @@ html, body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	background-image: url('../images/clouds.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: fixed;
 }
 header {
 	font-family: 'Open Sans', Helvetica, sans-serif;
+	position: sticky;
+	top: 0px;
+	z-index: 3;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: center;
 	width: 100%;
-	border-bottom: 1px solid black;
+	/* border-bottom: 1px solid whitesmoke; */
+	flex: 1 auto;
+	color: whitesmoke;
+	backdrop-filter: blur(12px) brightness(90%);
+	transform: translateZ(0px);
 }
-h1 {
-	font-size: 4rem;
-	margin: 20px auto;
+h1, h2 {
+	font-size: 3rem;
+	margin: 20px;
 	text-align: center;
+}
+h2 {
+	font-size: 2rem;
 }
 .container {
 	font-family: Roboto, Helvetica, sans-serif;
-	/* display: flex; */
+	display: flex;
 	text-align: center;
-	margin: 40px auto;
-	background-color: white;
-	padding: 30px;
+	margin: 20px auto;
+	padding: 15px;
 	border-radius: 8px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	max-width: 70%;
-	width: 100%;
+	width: 70%;
+	backdrop-filter: blur(15px) brightness(70%);
+	transform: translateZ(0px);
+	justify-content: center;
+	align-items: center;
+	flex-basis: 0;
+	flex-wrap: wrap;
 }
-/* img {
+#break {
 	width: 100%;
-} */
+	height: 0;
+}
+.container * {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+.container p {
+	font-size: 1.4rem;
+	color: whitesmoke;
+}
 input[type="text"] {
 	padding: 8px;
 	font-size: 1rem;
-	width: 60%;
+	width: 400px;
 	margin-right: 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+	height: 50%;
 }
 button {
 	padding: 8px 16px;
@@ -59,19 +88,98 @@ button:hover {
 	background-color: rgb(0, 0, 255);
 	color: whitesmoke;
 }
-.weather-details {
-	display: flex;
-	font-family: 'Inter', Helvetica, sans-serif;
-	display: flex;
-	/* text-align: center; */
-	margin: 40px auto;
-	background-color: white;
-	padding: 30px;
-	max-width: 70%;
-	width: 100%;
-
+#weather-details {
 	display: none;
+	font-family: 'Inter', Helvetica, sans-serif;
+	margin: 0px auto;
+	color : whitesmoke;
+	width: 70%;
+	flex: 1 auto;
+	/* flex-direction: row; */
+	flex-wrap: wrap;
+	justify-content: center;
 }
+#weather-details > row {
+	width: 100%;
+	display: flex;
+}
+.weather-card {
+	display: none;
+	backdrop-filter: blur(12px) brightness(70%);
+	flex-direction: column;
+	width: 200px;
+	height: 150px;
+	margin: 20px;
+	padding: 12px;
+	gap:5px;
+	/* justify-content: space-around; */
+	/* align-items: center; */
+	border-radius: 8px;
+}
+#weather-details .title {
+	text-decoration: underline;
+	text-align: left;
+	align-items: flex-start;
+}
+.title {
+	font-size: 1rem;
+	margin: 0px;
+}
+#pollution {
+	width: 400px;
+}
+#sunrise-sunset {
+	width: 400px;
+	white-space: pre-line;
+}
+/* Styling for the HTML meter element */
+.pollution-meter {
+	width: 100%;
+	height: 12px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 6px;
+  }
+
+/* Custom styling for meter element - these may vary by browser */
+.pollution-meter::-webkit-meter-bar {
+	background: #e0e0e0;
+	border-radius: 6px;
+	border: none;
+  }
+
+.pollution-meter::-webkit-meter-optimum-value {
+	background: linear-gradient(to right, #1ed01e, #92d050);
+	border-radius: 6px;
+}
+
+.pollution-meter::-webkit-meter-suboptimum-value {
+	background: linear-gradient(to right, #ffff00, #ffc000);
+	border-radius: 6px;
+}
+
+.pollution-meter::-webkit-meter-even-less-good-value {
+	background: linear-gradient(to right, #ff0000, #7030a0);
+	border-radius: 6px;
+}
+
+/* Firefox support */
+.pollution-meter::-moz-meter-bar {
+	border-radius: 6px;
+}
+
+.pollution-meter::-moz-meter-optimum {
+	background: #1ed01e;
+}
+
+.pollution-meter::-moz-meter-sub-optimum {
+	background: #ffff00;
+}
+
+.pollution-meter::-moz-meter-sub-sub-optimum {
+	background: #ff0000;
+}
+
 #weatherTitle {
 	font-size: 1.5rem;
 }
@@ -80,7 +188,6 @@ button:hover {
 	vertical-align: middle;
 	max-width: 100%;
 	max-height: 100%;
-
 }
 #condition {
 	display: flex;
@@ -88,10 +195,6 @@ button:hover {
 #errorMessage {
 	color: red;
 	text-align: center;
-}
-.weather-details p {
-	font-size: 1.2rem;
-	margin: 5px 0;
 }
 input::selection {
 	color: whitesmoke;
@@ -109,18 +212,13 @@ input::selection {
 	display: flex;
 	justify-content: space-evenly;
 }
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
 	html, body {
-		background-color: rgb(10, 10, 35)
+		background-color: rgb(10, 10, 35);
+		color: whitesmoke;
 	}
 	header {
 		border-bottom: 1px solid whitesmoke;
-	}
-	h1 {
-		color: whitesmoke;
-	}
-	p {
-		color: whitesmoke;
 	}
 	button {
 		color: white;
@@ -137,7 +235,7 @@ input::selection {
 	}
 	.container {
 		text-align: center;
-		background-color: black;
+		background-color: rgba(0, 0, 0, 0.119);
 		padding: 30px;
 		border-radius: 8px;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -150,12 +248,18 @@ input::selection {
 		color: black;
 		background-color: whitesmoke;
 	}
-}
+} */
 @media screen and (max-width: 768px) {
+	h2 {
+		display: none;
+	}
 	h1 {
 		font-size: 3.5em;
 	}
-	p {
+	/* p {
 		margin-top: 0px;
+	} */
+	#weather-map {
+		display: none;
 	}
 }
