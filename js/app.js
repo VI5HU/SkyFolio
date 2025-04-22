@@ -22,7 +22,6 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 		searchParams.append('aqi', 'yes');
 		weatherData = await getData(weatherApiBaseUrl, searchParams);
 		displayWeather(weatherData);
-		// document.getElementById("weatherapi-weather-widget-3").style.display  = 'block';
 		document.getElementById('location').innerHTML = `Current location: ${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`;
 	} else {
 		updateForecastTable(city);
@@ -37,22 +36,9 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 			document.getElementById('location').innerHTML = `Location: ${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`;
 		} catch (error) {
 			displayError("Not a proper city name");
+			document.getElementById('location').innerHTML = `Current location: ${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`;
 		}
-		// document.getElementById("weatherapi-weather-widget-3").style.display  = 'none';
 	}
-
-	// let img;
-	// fetch(wttr)
-	// 	.then(response => response.text())
-	// 	.then(html => {
-	// 		const parser = new DOMParser();
-	// 		const doc = parser.parseFromString(html, 'text/html');
-	// 		const images = doc.querySelector('img');
-	// 		img = 'https://wttr.in/' + images.src.split("/")[3];
-	// 		console.log(img);
-	// 		document.getElementById('weather-map').src = img;
-	// 	})
-	// 	.catch(error => console.error('Error fetching HTML:', error));
 });
 
 async function getData(baseUrl, searchParams) {
@@ -66,7 +52,7 @@ async function getData(baseUrl, searchParams) {
 		return await response.json();
 	} catch (error) {
 		console.error("Error fetching JSON:", error);
-		displayError('Error: ' + error);
+		displayError(error);
 		return null;
 	}
 }
@@ -93,6 +79,7 @@ async function displayWeather(data) {
 
 	document.querySelector('#humidity .value').textContent = `${data.current.humidity}%`;
 	document.querySelector('#humidity .unit').textContent = `Dewpoint: ${data.current.dewpoint_c} C`;
+	console.log(data);
 
 	document.querySelector('#pollution .value').textContent = `${data.current.air_quality['gb-defra-index']}%`;
 	updatePollutionMeter(data.current.air_quality['gb-defra-index']);
@@ -105,9 +92,10 @@ async function displayWeather(data) {
 
 	document.querySelector('#big-weather-card #condition').textContent = `${data.current.condition.text}`;
 	document.querySelector('#big-weather-card #temperature').textContent = `${data.current.temp_c}° C`;
+	document.querySelector('#big-weather-card #feels-like').textContent = `Feels like ${data.current.feelslike_c}° C`;
 	document.querySelector('#big-weather-card #weather-icon').src = data.current.condition.icon;
 
-	let astronomyData = await getData('http://api.weatherapi.com/v1/astronomy.json?', new URLSearchParams({
+	let astronomyData = await getData('https://api.weatherapi.com/v1/astronomy.json?', new URLSearchParams({
 		key: TOKEN,
 		q: 'auto:ip'
 	}))
@@ -118,6 +106,7 @@ function displayError(message) {
 	document.getElementById("errorMessage").style.display = "block";
 	document.getElementById("errorMessage").textContent = message;
 	document.getElementById("weather-details").style.display = "none";
+	document.getElementById("forecast").style.display = "none";
 }
 
 function updatePollutionMeter(aqiValue) {
