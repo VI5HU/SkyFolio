@@ -4,6 +4,7 @@ let searchParams = new URLSearchParams({
 	q: 'auto:ip'
 })
 let currentLocation = await getData('https://api.weatherapi.com/v1/ip.json?', searchParams);
+
 document.getElementById('location').innerHTML = `Location: ${currentLocation.city}, ${currentLocation.region}, ${currentLocation.country_name}`;
 
 document.getElementById("getWeather").addEventListener("click", async function(event) {
@@ -21,7 +22,7 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 		searchParams.append('aqi', 'yes');
 		weatherData = await getData(weatherApiBaseUrl, searchParams);
 		displayWeather(weatherData);
-		document.getElementById("weatherapi-weather-widget-3").style.display  = 'block';
+		// document.getElementById("weatherapi-weather-widget-3").style.display  = 'block';
 		document.getElementById('location').innerHTML = `Current location: ${weatherData.location.name}, ${weatherData.location.region}, ${weatherData.location.country}`;
 	} else {
 		updateForecastTable(city);
@@ -37,7 +38,7 @@ document.getElementById("getWeather").addEventListener("click", async function(e
 		} catch (error) {
 			displayError("Not a proper city name");
 		}
-		document.getElementById("weatherapi-weather-widget-3").style.display  = 'none';
+		// document.getElementById("weatherapi-weather-widget-3").style.display  = 'none';
 	}
 
 	// let img;
@@ -196,7 +197,6 @@ async function updateForecastTable(location) {
 		// Update weather icons
 		const weatherRow = tableRows[1];
 		const weatherCells = weatherRow.querySelectorAll('td');
-		console.log(forecastData);
 
 		for (let i = 1; i < weatherCells.length && i <= forecast.length; i++) {
 			const condition = forecast[i-1].day.condition;

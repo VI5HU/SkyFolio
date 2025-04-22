@@ -181,14 +181,14 @@ button:hover {
 	margin: 10px 0;
 	border: none;
 	border-radius: 6px;
-  }
+}
 
 /* Custom styling for meter element - these may vary by browser */
 .pollution-meter::-webkit-meter-bar {
 	background: #e0e0e0;
 	border-radius: 6px;
 	border: none;
-  }
+}
 
 .pollution-meter::-webkit-meter-optimum-value {
 	background: linear-gradient(to right, #1ed01e, #92d050);
