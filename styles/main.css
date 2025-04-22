@@ -3,7 +3,6 @@ html, body {
 	background-color: whitesmoke;
 	margin: 0;
 	padding: 0;
-	/* display: flex; */
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
@@ -22,10 +21,10 @@ header {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	/* border-bottom: 1px solid whitesmoke; */
+	border-bottom: 1px solid rgb(0, 0, 0);
 	flex: 1 auto;
 	color: whitesmoke;
-	backdrop-filter: blur(12px) brightness(90%);
+	backdrop-filter: blur(8px) brightness(80%);
 	transform: translateZ(0px);
 }
 h1, h2 {
@@ -44,7 +43,7 @@ h2 {
 	padding: 15px;
 	border-radius: 8px;
 	width: 70%;
-	backdrop-filter: blur(15px) brightness(70%);
+	backdrop-filter: blur(12px) brightness(70%);
 	transform: translateZ(0px);
 	justify-content: center;
 	align-items: center;
@@ -99,31 +98,74 @@ button:hover {
 	flex-wrap: wrap;
 	justify-content: center;
 }
-#weather-details > row {
-	width: 100%;
-	display: flex;
-}
 .weather-card {
 	display: none;
-	backdrop-filter: blur(12px) brightness(70%);
 	flex-direction: column;
+	backdrop-filter: blur(12px) brightness(70%);
 	width: 200px;
-	height: 150px;
+	height: 120px;
 	margin: 20px;
 	padding: 12px;
 	gap:5px;
-	/* justify-content: space-around; */
+	justify-content: space-around;
 	/* align-items: center; */
 	border-radius: 8px;
 }
-#weather-details .title {
+#big-weather-card {
+	border-radius: 8px;
+	display: none;
+	backdrop-filter: blur(12px) brightness(70%);
+	width: 500px;
+	height: 150px;
+	justify-content: flex-start;
+	align-items: center;
+}
+#big-weather-card p {
+	display: flex;
+	font-size: 20px;
+	flex-direction: column;
+	margin: 10px 15px;
+	white-space: pre-line;
+}
+#weather-icon {
+	display: flex;
+	margin-left: 10px;
+	width: 64px;
+	height: 64px;
+	align-items: center;
+	justify-content: center;
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.column {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+}
+.weather-row {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.title {
 	text-decoration: underline;
 	text-align: left;
 	align-items: flex-start;
-}
-.title {
 	font-size: 1rem;
 	margin: 0px;
+}
+.value {
+	margin: 5px;
+	margin-left: 0px;
+}
+.unit {
+	margin: 5px;
+	margin-left: 0px;
 }
 #pollution {
 	width: 400px;
@@ -183,15 +225,9 @@ button:hover {
 #weatherTitle {
 	font-size: 1.5rem;
 }
-#conditionImage {
-	display: inline-block;
-	vertical-align: middle;
-	max-width: 100%;
-	max-height: 100%;
-}
-#condition {
+/* #condition {
 	display: flex;
-}
+} */
 #errorMessage {
 	color: red;
 	text-align: center;
@@ -205,12 +241,69 @@ input::selection {
 	/* margin: 0 auto; */
 	display: none;
 }
-#temp {
+#widget {
 	margin: 0 auto;
 	max-width: 70%;
 	width: 100%;
 	display: flex;
 	justify-content: space-evenly;
+}
+table {
+	display: none;
+	width: 80%;
+	margin: 20px auto;
+	border-collapse: collapse;
+	text-align: center;
+	backdrop-filter: blur(12px) brightness(70%);
+}
+
+th, td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+th {
+	background-color: #f8f8f8;
+}
+
+.header-row th {
+	font-weight: bold;
+	color: #0066cc;
+}
+
+.row-label {
+	background-color: #222;
+	color: white;
+	text-align: left;
+	padding-left: 15px;
+}
+
+.sunny {
+	color: #FFD700;
+	font-size: 24px;
+}
+
+.max-temp {
+	background-color: #e67e22;
+	color: white;
+}
+
+.high-temp {
+	background-color: #f39c12;
+	color: white;
+}
+
+.min-temp {
+	background-color: #f1c40f;
+	color: black;
+}
+
+.wind-row {
+	background-color: #a5f3e3;
+}
+
+.hourly-row td {
+	background-color: #f8f8f8;
 }
 /* @media (prefers-color-scheme: dark) {
 	html, body {

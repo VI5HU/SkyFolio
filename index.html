@@ -6,6 +6,7 @@
 	<title>SkyFolio</title>
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/font-families.css">
+	<link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
 </head>
 <body>
 	<header>
@@ -37,32 +38,16 @@
 		<p id='sunset'></p>
 		<p id='moonrise'></p>
 		<p id='moonset'></p> -->
-		<!-- <div id='wind'>
-
-			<p class = 'title'>Wind</p>
-			<p>e</p>
+		<div class='weather-row'>
+			<div id='big-weather-card'>
+				<img id='weather-icon'>
+				<div class='column'>
+					<p id='condition'></p>
+					<p id='temperature'></p>
+				</div>
+			</div>
 		</div>
-		<div id='humidity'>
-			<p class = 'title'>Humidity</p>
-			<p>e</p>
-		</div>
-		<div id='air'>
-			<p class = 'title'>Air pollution</p>
-			<p>e</p>
-		</div>
-		<div id='pressure'>
-			<p class = 'title'>Pressure</p>
-			<p>e</p>
-		</div>
-		<div id='uv'>
-			<p class = 'title'>UV index</p>
-			<p>e</p>
-		</div>
-		<div id='sunrise'>
-			<p class = 'title'>Sunrise and sunset</p>
-			<p>e</p>
-		</div> -->
-		<div class='row'>
+		<div class='weather-row'>
 			<div class='weather-card' id='wind'>
 				<p class="title">Wind</p>
 				<p class="value"></p>
@@ -77,10 +62,6 @@
 				<p class="title">Air Pollution</p>
 				<p class="value"></p>
 				<p class="unit"></p>
-				<!-- <div class="pollution-meter">
-					<div class="meter-background"></div>
-					<div class="meter-indicator"></div>
-				</div> -->
 				<meter id="pollution-meter"
 						value="5"
 						min="0"
@@ -91,7 +72,7 @@
 				</meter>
 			</div>
 		</div>
-		<div class='row'>
+		<div class='weather-row'>
 			<div class='weather-card' id='pressure'>
 				<p class="title">Pressure</p>
 				<p class="value">1018 hPa</p>
@@ -109,11 +90,73 @@
 		</div>
 	</div>
 	<p id="errorMessage" class="error"></p>
-	<div id = 'temp'>
-		<div id="weatherapi-weather-widget-3">
-		</div>
+	<!-- <div id = 'widget'>
+		<div id="weatherapi-weather-widget-3"></div>
 		<img id="weather-map">
-	</div>
+	</div> -->
+	<table id='forecast'>
+		<tr class="header-row">
+			<th></th>
+			<th>Today</th>
+			<th>Tomorrow</th>
+			<th>Thu</th>
+
+		</tr>
+		<tr>
+			<td class="row-label">Weather</td>
+			<td><span class="sunny">☀️</span></td>
+			<td><span class="sunny">☀️</span></td>
+			<td><span class="sunny">☀️</span></td>
+		</tr>
+		<tr>
+			<td class="row-label">Max</td>
+			<td class="max-temp">99.5°f</td>
+			<td class="high-temp">96.8°f</td>
+			<td class="high-temp">94.1°f</td>
+		</tr>
+		<tr>
+			<td class="row-label">Min</td>
+			<td class="min-temp">81.0°f</td>
+			<td class="min-temp">82.7°f</td>
+			<td class="min-temp">82.7°f</td>
+		</tr>
+		<tr>
+			<td class="row-label">Wind</td>
+			<td class="wind-row">15.7 mph</td>
+			<td class="wind-row">13.4 mph</td>
+			<td class="wind-row">14.1 mph</td>
+		</tr>
+		<tr>
+			<td class="row-label">Precip</td>
+			<td>0.00 in</td>
+			<td>0.00 in</td>
+			<td>0.00 in</td>
+		</tr>
+		<tr>
+			<td class="row-label">Humidity</td>
+			<td>43%</td>
+			<td>45%</td>
+			<td>48%</td>
+		</tr>
+		<tr>
+			<td class="row-label">Sunrise</td>
+			<td>06:16 AM</td>
+			<td>06:15 AM</td>
+			<td>06:14 AM</td>
+		</tr>
+		<tr>
+			<td class="row-label">Sunset</td>
+			<td>06:58 PM</td>
+			<td>06:58 PM</td>
+			<td>06:58 PM</td>
+		</tr>
+		<tr>
+			<td class="row-label">UV</td>
+			<td>2.5</td>
+			<td>2.5</td>
+			<td>2.6</td>
+		</tr>
+	</table>
 	<script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=1131989&wid=3&tu=1&div=weatherapi-weather-widget-3' async></script>
 	<!-- <noscript>
 		<a href="https://www.weatherapi.com/weather/q/secunderabad-1131989" alt="Hour by hour Secunderabad weather">10 day hour by hour Secunderabad weather</a>
