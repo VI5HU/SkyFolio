@@ -1,147 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>SkyFolio</title>
-	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/font-families.css">
-	<link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-</head>
-<body>
-	<header>
-		<h1>SkyFolio</h1>
-		<h2> - A portfolio of the sky's moods</h2>
-	</header>
-	<div class="container">
-		<form id='form'>
-			<input type="text" id="city" placeholder="Enter City" autofocus/>
-			<button id="getWeather" type="submit">Get Weather</button>
-		</form>
-		<div id='break'></div>
-		<p id ='location'>Location: </p>
-	</div>
-	<div id ='weather-details'>
-		<div class='weather-row'>
-			<div id='big-weather-card'>
-				<img id='weather-icon'>
-				<div class='column'>
-					<p id='condition'></p>
-					<p id='temperature'></p>
-					<p id='feels-like'></p>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SkyFolio</title>
+		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/font-families.css">
+		<link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<header>
+			<h1>SkyFolio</h1>
+			<h2> - A portfolio of the sky's moods</h2>
+		</header>
+		<div class="container">
+			<form id='form'>
+				<input type="text" id="city" placeholder="Enter City" autofocus />
+				<button id="getWeather" type="submit">Get Weather</button>
+			</form>
+			<div id='break'></div>
+			<p id='location'>Location: </p>
+		</div>
+		<div id='weather-details'>
+			<div class='weather-row'>
+				<div id='big-weather-card'>
+					<img id='weather-icon'>
+					<div class='column'>
+						<p id='condition'></p>
+						<p id='temperature'></p>
+						<p id='feels-like'></p>
+					</div>
+				</div>
+			</div>
+			<div class='weather-row'>
+				<div class='weather-card' id='wind'>
+					<p class="title">Wind</p>
+					<p class="value"></p>
+					<p class="unit"></p>
+				</div>
+				<div class='weather-card' id='humidity'>
+					<p class="title">Humidity</p>
+					<p class="value"></p>
+					<p class="unit"></p>
+				</div>
+				<div class='weather-card' id="pollution">
+					<p class="title">Air Pollution</p>
+					<p class="value"></p>
+					<p class="unit"></p>
+					<meter id="pollution-meter" value="5" min="0" max="10" low="3" high="7" optimum="3">
+					</meter>
+				</div>
+			</div>
+			<div class='weather-row'>
+				<div class='weather-card' id='pressure'>
+					<p class="title">Pressure</p>
+					<p class="value">1018 hPa</p>
+					<p class="unit">High</p>
+				</div>
+				<div class='weather-card' id='uv'>
+					<p class="title">UV Index</p>
+					<p class="value">0.0</p>
+					<!-- <p class="unit">Low</p> -->
+				</div>
+				<div class='weather-card' id="sunrise-sunset">
+					<p class="title">Sunrise & Sunset</p>
+					<p class="value"></p>
 				</div>
 			</div>
 		</div>
-		<div class='weather-row'>
-			<div class='weather-card' id='wind'>
-				<p class="title">Wind</p>
-				<p class="value"></p>
-				<p class="unit"></p>
-			</div>
-			<div class='weather-card' id='humidity'>
-				<p class="title">Humidity</p>
-				<p class="value"></p>
-				<p class="unit"></p>
-			</div>
-			<div class='weather-card' id="pollution">
-				<p class="title">Air Pollution</p>
-				<p class="value"></p>
-				<p class="unit"></p>
-				<meter id="pollution-meter"
-						value="5"
-						min="0"
-						max="10"
-						low="3"
-						high="7"
-						optimum="3">
-				</meter>
-			</div>
-		</div>
-		<div class='weather-row'>
-			<div class='weather-card' id='pressure'>
-				<p class="title">Pressure</p>
-				<p class="value">1018 hPa</p>
-				<p class="unit">High</p>
-			</div>
-			<div class='weather-card' id='uv'>
-				<p class="title">UV Index</p>
-				<p class="value">0.0</p>
-				<!-- <p class="unit">Low</p> -->
-			</div>
-			<div class='weather-card' id="sunrise-sunset">
-				<p class="title">Sunrise & Sunset</p>
-				<p class="value"></p>
-			</div>
-		</div>
-	</div>
-	<p id="errorMessage" class="error"></p>
-	<table id='forecast'>
-		<tr class="header-row">
-			<th></th>
-			<th>Today</th>
-			<th>Tomorrow</th>
-			<th>Thu</th>
+		<p id="errorMessage" class="error"></p>
+		<table id='forecast'>
+			<tr class="header-row">
+				<th></th>
+				<th>Today</th>
+				<th>Tomorrow</th>
+				<th>Thu</th>
 
-		</tr>
-		<tr>
-			<td class="row-label">Weather</td>
-			<td><span class="sunny">☀️</span></td>
-			<td><span class="sunny">☀️</span></td>
-			<td><span class="sunny">☀️</span></td>
-		</tr>
-		<tr>
-			<td class="row-label">Max</td>
-			<td class="max-temp">99.5°f</td>
-			<td class="high-temp">96.8°f</td>
-			<td class="high-temp">94.1°f</td>
-		</tr>
-		<tr>
-			<td class="row-label">Min</td>
-			<td class="min-temp">81.0°f</td>
-			<td class="min-temp">82.7°f</td>
-			<td class="min-temp">82.7°f</td>
-		</tr>
-		<tr>
-			<td class="row-label">Wind</td>
-			<td class="wind-row">15.7 mph</td>
-			<td class="wind-row">13.4 mph</td>
-			<td class="wind-row">14.1 mph</td>
-		</tr>
-		<tr>
-			<td class="row-label">Precip</td>
-			<td>0.00 in</td>
-			<td>0.00 in</td>
-			<td>0.00 in</td>
-		</tr>
-		<tr>
-			<td class="row-label">Humidity</td>
-			<td>43%</td>
-			<td>45%</td>
-			<td>48%</td>
-		</tr>
-		<tr>
-			<td class="row-label">Sunrise</td>
-			<td>06:16 AM</td>
-			<td>06:15 AM</td>
-			<td>06:14 AM</td>
-		</tr>
-		<tr>
-			<td class="row-label">Sunset</td>
-			<td>06:58 PM</td>
-			<td>06:58 PM</td>
-			<td>06:58 PM</td>
-		</tr>
-		<tr>
-			<td class="row-label">UV</td>
-			<td>2.5</td>
-			<td>2.5</td>
-			<td>2.6</td>
-		</tr>
-	</table>
-	<!-- <script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=1131989&wid=3&tu=1&div=weatherapi-weather-widget-3' async></script> -->
-	<!-- <noscript>
-		<a href="https://www.weatherapi.com/weather/q/secunderabad-1131989" alt="Hour by hour Secunderabad weather">10 day hour by hour Secunderabad weather</a>
-	</noscript> -->
-	<script type="module" src="js/app.js"></script>
-</body>
+			</tr>
+			<tr>
+				<td class="row-label">Weather</td>
+				<td><span class="sunny">☀️</span></td>
+				<td><span class="sunny">☀️</span></td>
+				<td><span class="sunny">☀️</span></td>
+			</tr>
+			<tr>
+				<td class="row-label">Max</td>
+				<td class="max-temp">99.5°f</td>
+				<td class="high-temp">96.8°f</td>
+				<td class="high-temp">94.1°f</td>
+			</tr>
+			<tr>
+				<td class="row-label">Min</td>
+				<td class="min-temp">81.0°f</td>
+				<td class="min-temp">82.7°f</td>
+				<td class="min-temp">82.7°f</td>
+			</tr>
+			<tr>
+				<td class="row-label">Wind</td>
+				<td class="wind-row">15.7 mph</td>
+				<td class="wind-row">13.4 mph</td>
+				<td class="wind-row">14.1 mph</td>
+			</tr>
+			<tr>
+				<td class="row-label">Precip</td>
+				<td>0.00 in</td>
+				<td>0.00 in</td>
+				<td>0.00 in</td>
+			</tr>
+			<tr>
+				<td class="row-label">Humidity</td>
+				<td>43%</td>
+				<td>45%</td>
+				<td>48%</td>
+			</tr>
+			<tr>
+				<td class="row-label">Sunrise</td>
+				<td>06:16 AM</td>
+				<td>06:15 AM</td>
+				<td>06:14 AM</td>
+			</tr>
+			<tr>
+				<td class="row-label">Sunset</td>
+				<td>06:58 PM</td>
+				<td>06:58 PM</td>
+				<td>06:58 PM</td>
+			</tr>
+			<tr>
+				<td class="row-label">UV</td>
+				<td>2.5</td>
+				<td>2.5</td>
+				<td>2.6</td>
+			</tr>
+		</table>
+		<script type="module" src="js/app.js"></script>
+	</body>
 </html>
